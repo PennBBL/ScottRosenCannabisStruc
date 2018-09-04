@@ -43,12 +43,12 @@ for(v in vars.of.interest){
 output.tost.vals <- NULL
 for(v in vars.of.interest){
     name.val <- names(all.data)[v]
-    ## Run TOST with +/-.5 effect size boundry
+    ## Run TOST with +/-.5 effect size boundary
     test.val.one <- tost(x=equiv.data[which(equiv.data$marcat=='MJ Occ User'),v], y=equiv.data[which(equiv.data$marcat=="MJ Non-User"),v], paired=F, var.equal=F)
     test.val.two <- tost(x=equiv.data[which(equiv.data$marcat=='MJ Freq User'),v], y=equiv.data[which(equiv.data$marcat=="MJ Non-User"),v], paired=F, var.equal=F)
     test.val.three <- tost(x=equiv.data[which(equiv.data$marcat=='MJ Occ User'),v], y=equiv.data[which(equiv.data$marcat=="MJ Freq User"),v], paired=F, var.equal=F)
     print(v)
-    ## Run TOST with +/-.3 effect size boundry
+    ## Run TOST with +/-.3 effect size boundary
     test.val.four <- tost(x=equiv.data[which(equiv.data$marcat=='MJ Occ User'),v], y=equiv.data[which(equiv.data$marcat=="MJ Non-User"),v], paired=F, epsilon = .6, var.equal=F)
     test.val.five <- tost(x=equiv.data[which(equiv.data$marcat=='MJ Freq User'),v], y=equiv.data[which(equiv.data$marcat=="MJ Non-User"),v], paired=F, epsilon = .6, var.equal=F)
     test.val.six <- tost(x=equiv.data[which(equiv.data$marcat=='MJ Occ User'),v], y=equiv.data[which(equiv.data$marcat=="MJ Freq User"),v], paired=F, epsilon = .6, var.equal=F)
@@ -60,7 +60,7 @@ for(v in vars.of.interest){
 ################################################################
 ## Now apply fdr correction to our p-values
 ## FDR correction will be applied to all lobular
-## and regional values, within the respective specification
+## and regional values, within the respective specificity
 ## and within each metric of interest i.e. GMD, CT, and Vol
 ################################################################
 lowerLim <- c(1,140,238,361,373,385)

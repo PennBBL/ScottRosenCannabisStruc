@@ -25,7 +25,6 @@ all.data <- readRDS('mjAnovaData.RDS')
 ################################################################
 ## Regress out covariates from data
 ################################################################
-orig <- all.data
 base.model <- paste("s(ageAtScan1)+sex+averageManualRating+factor(race2)+overall_psychopathology_ar_4factor")
 vars.of.interest <- c(107:245, 255:352, 353:470,471,1540,1550:1588)
 for(v in vars.of.interest){
@@ -55,11 +54,11 @@ output.ci <- foreach(q=1:length(vars.of.interest), .combine='rbind', .packages='
     occ.vals <- tmp.dat[which(tmp.dat[,2]=="MJ Occ User"),1]
     fre.vals <- tmp.dat[which(tmp.dat[,2]=="MJ Freq User"),1]
     # Now calculate our bootstrapped differences
-    n.v.o <- two.boot(non.vals, occ.vals, mean, 1000, student=T, M=50)
-    n.v.f <- two.boot(non.vals, fre.vals, mean, 1000, student=T, M=50)
-    f.v.o <- two.boot(fre.vals, occ.vals, mean, 1000, student=T, M=50)
+    n.v.o <- two.boot(non.vals, occ.vals, mean, 10000, student=T, M=50)
+    n.v.f <- two.boot(non.vals, fre.vals, mean, 10000, student=T, M=50)
+    f.v.o <- two.boot(fre.vals, occ.vals, mean, 10000, student=T, M=50)
     # Now return our confidence intervals
-    out.row <- c(name.val,boot.ci(n.v.o)$basic[4:5],boot.ci(n.v.f)$basic[4:5],boot.ci(f.v.o)$basic[4:5], mean(non.vals),mean(occ.vals),mean(fre.vals))
+    out.row <- c(name.val,boot.ci(n.v.o)$student[4:5],boot.ci(n.v.f)$student[4:5],boot.ci(f.v.o)$student[4:5], mean(non.vals),mean(occ.vals),mean(fre.vals))
     out.row
 }
 ################################################################
@@ -93,7 +92,7 @@ fvoP <- pnorm(-abs(fvoZ))*2
 ################################################################
 ## Now apply fdr correction to our p-values
 ## FDR correction will be applied to all lobular
-## and regional values, within the respective specification
+## and regional values, within the respective specificity
 ## and within each metric of interest i.e. GMD, CT, and Vol
 ################################################################
 lowerLim <- c(1,140,238,361,373,385)
@@ -118,16 +117,16 @@ for(q in c(358,359,360)){
   tmp.dat <- all.data[,c(name.val, 'marcat')]
   non.vals <- tmp.dat[which(tmp.dat[,2]=="MJ Non-User"),1]
   occ.vals <- tmp.dat[which(tmp.dat[,2]=="MJ Occ User"),1]
-  n.v.o <- two.boot(non.vals, occ.vals, mean, 1000, student=T, M=50)
+  n.v.o <- two.boot(non.vals, occ.vals, mean, 10000, student=T, M=50)
   ci.vals <- round(boot.ci(n.v.o)$student[4:5], digits=3)
   ci.string <- paste("95% CI [", ci.vals[1], ",", ci.vals[2], "] ", sep='')
   ## Now plot our histogram for these values
   out.plot <- ggplot() +
     geom_histogram(aes(n.v.o$t[,1]-n.v.o$t[,2]), color='red', alpha=.3, bins=100) +
-    geom_segment(aes(x=ci.vals[1],xend=ci.vals[1], y=0, yend=40)) +
-    geom_segment(aes(x=ci.vals[2],xend=ci.vals[2],y=0, yend=40)) +
+    geom_segment(aes(x=ci.vals[1],xend=ci.vals[1], y=0, yend=250)) +
+    geom_segment(aes(x=ci.vals[2],xend=ci.vals[2],y=0, yend=250)) +
     ggtitle('') +
-    coord_cartesian(xlim=c(-.5, .5), ylim=c(0,50)) +
+    coord_cartesian(xlim=c(-.5, .5), ylim=c(0,400)) +
     theme_bw() +
     annotate("text",  x=Inf, y = Inf, label = ci.string, vjust=3.5, hjust=1, parse = F, size=8) +
     theme(text = element_text(size=30), axis.title.x = element_blank(), axis.title.y = element_blank())
@@ -143,17 +142,17 @@ for(q in c(358,359,360)){
     tmp.dat <- all.data[,c(name.val, 'marcat')]
     non.vals <- tmp.dat[which(tmp.dat[,2]=="MJ Non-User"),1]
     fre.vals <- tmp.dat[which(tmp.dat[,2]=="MJ Freq User"),1]
-    n.v.f <- two.boot(non.vals, fre.vals, mean, 1000, student=T, M=50)
+    n.v.f <- two.boot(non.vals, fre.vals, mean, 10000, student=T, M=50)
     ci.vals <- round(boot.ci(n.v.f)$student[4:5], digits=3)
     ci.string <- paste("95% CI [", ci.vals[1], ",", ci.vals[2], "] ", sep='')
     ## Now plot our histogram for these values
     out.plot <- ggplot() +
     geom_histogram(aes(n.v.f$t[,1]-n.v.o$t[,2]), color='red', alpha=.3, bins=100) +
-    geom_segment(aes(x=ci.vals[1],xend=ci.vals[1], y=0, yend=40)) +
-    geom_segment(aes(x=ci.vals[2],xend=ci.vals[2],y=0, yend=40)) +
+    geom_segment(aes(x=ci.vals[1],xend=ci.vals[1], y=0, yend=250)) +
+    geom_segment(aes(x=ci.vals[2],xend=ci.vals[2],y=0, yend=250)) +
     ggtitle('') +
     #xlab(name.val) +
-    coord_cartesian(xlim=c(-.5, .5), ylim=c(0,50)) +
+    coord_cartesian(xlim=c(-.5, .5), ylim=c(0,400)) +
     theme_bw() +
     annotate("text",  x=Inf, y = Inf, label = ci.string, vjust=3.5, hjust=1, parse = F, size=8) +
     theme(text = element_text(size=30), axis.title.x = element_blank(), axis.title.y = element_blank())
@@ -169,16 +168,16 @@ for(q in c(358,359,360)){
     tmp.dat <- all.data[,c(name.val, 'marcat')]
     occ.vals <- tmp.dat[which(tmp.dat[,2]=="MJ Occ User"),1]
     fre.vals <- tmp.dat[which(tmp.dat[,2]=="MJ Freq User"),1]
-    f.v.o <- two.boot(fre.vals, occ.vals, mean, 1000, student=T, M=50)
+    f.v.o <- two.boot(fre.vals, occ.vals, mean, 10000, student=T, M=50)
     ci.vals <- round(boot.ci(f.v.o)$student[4:5], digits=3)
     ci.string <- paste("95% CI [", ci.vals[1], ",", ci.vals[2], "] ", sep='')
     ## Now plot our histogram for these values
     out.plot <- ggplot() +
     geom_histogram(aes(f.v.o$t[,1]-n.v.o$t[,2]), color='red', alpha=.3, bins=100) +
-    geom_segment(aes(x=ci.vals[1],xend=ci.vals[1], y=0, yend=40)) +
-    geom_segment(aes(x=ci.vals[2],xend=ci.vals[2],y=0, yend=40)) +
+    geom_segment(aes(x=ci.vals[1],xend=ci.vals[1], y=0, yend=250)) +
+    geom_segment(aes(x=ci.vals[2],xend=ci.vals[2],y=0, yend=250)) +
     ggtitle('') +
-    coord_cartesian(xlim=c(-.5, .5), ylim=c(0,50)) +
+    coord_cartesian(xlim=c(-.5, .5), ylim=c(0,400)) +
     theme_bw() +
     annotate("text",  x=Inf, y = Inf, label = ci.string, vjust=3.5, hjust=1, parse = F, size=8) +
     theme(text = element_text(size=30), axis.title.x = element_blank(), axis.title.y = element_blank())
