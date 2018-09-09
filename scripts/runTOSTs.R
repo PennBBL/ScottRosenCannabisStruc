@@ -72,3 +72,10 @@ for(colVal in 1:6){
         outputFDRPVal[lowerLim[limVal]:upperLim[limVal],colVal] <- p.adjust(inputPVal[lowerLim[limVal]:upperLim[limVal],colVal], method='fdr')
     }
 }
+
+################################################################
+## Now return ROI's that are not FDR sig
+################################################################
+output.tost.vals <- cbind(output.tost.vals, outputFDRPVal)
+all.out <- output.tost.vals[which(outputFDRPVal[,5] > .05 | outputFDRPVal[,6] >.05),]
+write.csv(all.out, "outputTOSTNonSig.csv", quote=F,row.names=F)
