@@ -4,7 +4,7 @@
 # linking the relationship of cannabis consumption to structural
 # imaging phenotypes
 # This script in particular will prepare volumetric density plots
-# for a limbic and basal ganlia regions, as well as associated F stats
+# for limbic and basal ganglia regions, as well as associated F stats
 ################################################################
 
 ################################################################
@@ -22,10 +22,10 @@ all.data <- readRDS('mjAnovaData.RDS')
 ################################################################
 ## Create function(s)
 ################################################################
-## Cretae a function which will return a density plot for the input variables
-writeDensityPlot <- function(dataIn, var.of.interest=NULL, covariates="s(ageAtScan1)+sex+averageManualRating+factor(race2)+overall_psychopathology_ar_4factor",paraMetricValue=NULL, nonParametricValue=NULL, linMod=FALSE){
+## Create a function which will return a density plot for the input variables
+writeDensityPlot <- function(dataIn, var.of.interest=NULL, covariates="s(ageAtScan1)+sex+averageManualRating+factor(race2)+overall_psychopathology_ar_4factor", paraMetricValue=NULL, nonParametricValue=NULL, linMod=FALSE){
     ## First check we have a variable of interest
-    if (missing(var.of.interest)) { stop("Missing requireed input variable (DV)")}
+    if (missing(var.of.interest)) { stop("Missing required input variable (DV)")}
     ## Regress out covairates
     tmp.form <- as.formula(paste(var.of.interest, covariates, sep="~"))
     tmp.mod <- mgcv::gam(tmp.form, data=dataIn, na.action=na.exclude)
@@ -70,8 +70,8 @@ returnColorScale <- function(){
 
 ################################################################
 ## Now identify our variables of interest
-## This will loop through all of the subcortical ROI's
-## as well as TBM, TBGM, and TBWM
+## This will loop through all of the subcortical ROIs
+## as well as TBV, TBGM, and TBWM
 ################################################################
 roi.of.interest <- c(1550:1552,109,110,111,112,114,115,127,128,129,130,131,132, 121, 122)
 
