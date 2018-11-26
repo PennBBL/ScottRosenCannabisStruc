@@ -60,15 +60,15 @@ Cerebellar Vermal Lobules VI.VII,Cerebellar_Vermal_Lobules_VI.VII,Cerebellum,N,I
 Cerebellar Vermal Lobules VIII.X,Cerebellar_Vermal_Lobules_VIII.X,Cerebellum,N,I,E,I
 Cerebellum Exterior,Cerebellum_Exterior,Cerebellum,Y,I,E,I
 Cerebellum White Matter,Cerebellum_White_Matter,Cerebellum,Y,I,E,E
-Brain_Stem,Brain_Stem,NA,N,I,E,I
+Brain_Stem,Brain_Stem,NoAssignment,N,I,E,I
 Limbic Lobe WM,Limbic_Lobe_WM,WM,Y,I,E,E
 Insular Lobe WM,Insular_Lobe_WM,WM,Y,I,E,E
 Frontal Lobe WM,Frontal_Lobe_WM,WM,Y,I,E,E
 Parietal Lobe WM,Parietal_Lobe_WM,WM,Y,I,E,E
 Occipital Lobe WM,Occipital_Lobe_WM,WM,Y,I,E,E
 Temporal Lobe WM,Temporal_Lobe_WM,WM,Y,I,E,E
-3rd Ventricule,3rd_Ventricle,NA,N,E,E,E
-4th Ventricle,4th_Ventricle,NA,N,E,E,E
-CSF,CSF,NA,N,E,E,E
-Inferior Lateral Ventricle,Inf_Lat_Vent,NA,Y,E,E,E
-Lateral Ventricle,Lateral_Ventrcle,NA,Y,E,E,E
+3rd Ventricule,3rd_Ventricle,NoAssignment,N,E,E,E
+4th Ventricle,4th_Ventricle,NoAssignment,N,E,E,E
+CSF,CSF,NoAssignment,N,E,E,E
+Inferior Lateral Ventricle,Inf_Lat_Vent,NoAssignment,Y,E,E,E
+Lateral Ventricle,Lateral_Ventrcle,NoAssignment,Y,E,E,E
