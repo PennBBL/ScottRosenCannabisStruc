@@ -1,0 +1,74 @@
+ROI_readable,ROI,Lobular_Assignment,Lateral,Vol,CT,GMD
+Accumbens Area,NA,NA,Y,I,E,I
+ACgG,ACgG,Limbic,Y,I,I,I
+AIns,AIns,Insular,Y,I,I,I
+Amygdala,Amy,NA,Y,I,E,I
+AnG,AnG,Parietal,Y,I,I,I
+AOrG,AOrG,Frontal,Y,I,I,I
+Calc,Calc,Occipital,Y,I,I,I
+Caudate,CN,NA,Y,I,E,I
+CO,CO,Frontal,Y,I,I,I
+Cun,Cun,Occipital,Y,I,I,I
+Ent,Ent,Limbic,Y,I,I,I
+FO,FO,Frontal,Y,I,I,I
+FRP,FRP,Frontal,Y,I,I,I
+FuG,FuG,Temporal,Y,I,I,I
+GRe,GRe,Frontal,Y,I,I,I
+Hippocampus,Hipp,NA,Y,I,E,I
+IOG,IOG,Occipital,Y,I,I,I
+ITG,ITG,Temporal,Y,I,I,I
+LiG,LiG,Occipital,Y,I,I,I
+LOrG,LOrG,Frontal,Y,I,I,I
+MCgG,MCgG,Limbic,Y,I,I,I
+MFC,MFC,Frontal,Y,I,I,I
+MFG,MFG,Frontal,Y,I,I,I
+MOG,MOG,Occipital,Y,I,I,I
+MOrG,MOrG,Frontal,Y,I,I,I
+MPoG,MPoG,Parietal,Y,I,I,I
+MPrG,MPrG,Frontal,Y,I,I,I
+MSFG,MSFG,Frontal,Y,I,I,I
+MTG,MTG,Temporal,Y,I,I,I
+OCP,OCP,Occipital,Y,I,I,I
+OFuG,OFuG,Occipital,Y,I,I,I
+OpIFG,OpIFG,Frontal,Y,I,I,I
+OrIFG,OrIFG,Frontal,Y,I,I,I
+Pallidum,GP,NA,Y,I,E,I
+PCgG,PCgG,Limbic,Y,I,I,I
+PCu,PCu,Parietal,Y,I,I,I
+PHG,PHG,Limbic,Y,I,I,I
+PIns,PIns,Insular,Y,I,I,I
+PO,PO,Parietal,Y,I,I,I
+PoG,PoG,Parietal,Y,I,I,I
+POrG,POrG,Frontal,Y,I,I,I
+PP,PP,Temporal,Y,I,I,I
+PrG,PrG,Frontal,Y,I,I,I
+PT,PT,Temporal,Y,I,I,I
+Putamen,Put,NA,Y,I,E,I
+SCA,SCA,Frontal,Y,I,I,I
+SFG,SFG,Frontal,Y,I,I,I
+SMC,SMC,Frontal,Y,I,I,I
+SMG,SMG,Parietal,Y,I,I,I
+SOG,SOG,Occipital,Y,I,I,I
+SPL,SPL,Parietal,Y,I,I,I
+STG,STG,Temporal,Y,I,I,I
+Thalamus Proper,Tha,NA,Y,I,E,I
+TMP,TMP,Temporal,Y,I,I,I
+TrIFG,TrIFG,Frontal,Y,I,I,I
+TTG,TTG,Temporal,Y,I,I,I
+Cerebellar Vermal Lobules I.V,Cerebellar_Vermal_Lobules_I.V,Cerebellum,N,I,E,I
+Cerebellar Vermal Lobules VI.VII,Cerebellar_Vermal_Lobules_VI.VII,Cerebellum,N,I,E,I
+Cerebellar Vermal Lobules VIII.X,Cerebellar_Vermal_Lobules_VIII.X,Cerebellum,N,I,E,I
+Cerebellum Exterior,Cerebellum_Exterior,Cerebellum,Y,I,E,I
+Cerebellum White Matter,Cerebellum_White_Matter,Cerebellum,Y,I,E,E
+Brain_Stem,Brain_Stem,NA,N,I,E,I
+Limbic Lobe WM,Limbic_Lobe_WM,WM,Y,I,E,E
+Insular Lobe WM,Insular_Lobe_WM,WM,Y,I,E,E
+Frontal Lobe WM,Frontal_Lobe_WM,WM,Y,I,E,E
+Parietal Lobe WM,Parietal_Lobe_WM,WM,Y,I,E,E
+Occipital Lobe WM,Occipital_Lobe_WM,WM,Y,I,E,E
+Temporal Lobe WM,Temporal_Lobe_WM,WM,Y,I,E,E
+3rd Ventricule,3rd_Ventricle,NA,N,E,E,E
+4th Ventricle,4th_Ventricle,NA,N,E,E,E
+CSF,CSF,NA,N,E,E,E
+Inferior Lateral Ventricle,Inf_Lat_Vent,NA,Y,E,E,E
+Lateral Ventricle,Lateral_Ventrcle,NA,Y,E,E,E
